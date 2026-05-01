@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hookbus-dashboard-enterprise"
+version = "1.0.0a1"
+description = "HookBus Dashboard Enterprise - standalone operator UI for live HookBus events, stats, publishers, and subscriber health"
+authors = [{name = "Agentic Thinking Limited"}]
+license = {text = "Source-available; see LICENSE"}
+requires-python = ">=3.10"
+
+[project.scripts]
+hookbus-dashboard-enterprise = "hookbus_dashboard_enterprise:main"
