@@ -11,4 +11,4 @@ license = {text = "Source-available; see LICENSE"}
 requires-python = ">=3.10"
 
 [project.scripts]
-hookbus-dashboard-enterprise = "hookbus_dashboard_enterprise:main"
+hookbus-dashboard-enterprise = "hookbus_dashboard_enterprise.__main__:cli"
