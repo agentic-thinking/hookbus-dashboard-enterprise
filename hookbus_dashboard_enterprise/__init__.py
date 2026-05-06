@@ -5,8 +5,8 @@ Shows publishers, the bus, subscribers, and a real-time event log.
 Matches the agenticthinking.uk website visual style.
 
 Usage:
-    python3 -m cre.hookbus_dashboard              # Default port 8900
-    python3 -m cre.hookbus_dashboard --port 8900   # Custom port
+    python3 -m cre.hookbus_dashboard              # Default port 8901
+    python3 -m cre.hookbus_dashboard --port 8901   # Custom port
     python3 -m cre.hookbus_dashboard --db /path/to/cre.db
 """
 
@@ -19,7 +19,7 @@ from .api import HookBusDashboardHandler, set_monitor
 from .bus_monitor import BusMonitor
 
 
-def main(port=8900, db_path=None):
+def main(port=8901, db_path=None):
     """Start the HookBus Dashboard server."""
     db_path = db_path or os.path.expanduser("~/.hookbus/data/auditor.db")
     bus_api_url = (
@@ -55,7 +55,8 @@ def main(port=8900, db_path=None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="HookBus Dashboard")
-    parser.add_argument("--port", type=int, default=8900, help="HTTP port (default: 8900)")
+    default_port = int(os.environ.get("HOOKBUS_DASHBOARD_PORT", "8901"))
+    parser.add_argument("--port", type=int, default=default_port, help=f"HTTP port (default: {default_port})")
     parser.add_argument("--db", default=None, help="Path to CRE SQLite database")
     args = parser.parse_args()
     main(port=args.port, db_path=args.db)
